@@ -1,0 +1,6 @@
+services:
+    db:
+        image: redis
+        container_name: redis-test
+        ports:
+            - 6379:6379
