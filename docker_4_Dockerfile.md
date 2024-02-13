@@ -122,8 +122,10 @@ services:
 ```sh
 docker-compose -f docker-compose.yaml up
 ```
-Dans le conteneur: 
-```
+
+Dans le conteneur:
+
+```sh
 docker exec -it docker-demo-app-my-app-1 sh
 cd /home/app
 ls

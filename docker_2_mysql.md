@@ -1,4 +1,4 @@
-# Conteneurisation de la base mysql
+# Conteneurisation d'une base mysql
 
 [image mysql sur docker hub](https://hub.docker.com/_/mysql)
 
