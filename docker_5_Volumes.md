@@ -1,15 +1,27 @@
 
 # Volumes
 
-Persistance des données grace à une association entre le système de fichiers local et celui virtuel de docker
+Persistance des données grace à une association entre le système de fichiers local et celui virtuel de docker qui réplique automatiquement les données.
 
-Dans `docker run` on peut faire l'association hôte:docker `doker run -v /home/mount/data:var/lib/mysql/data`
+![docker volumes](./images/docker\ volumes.png)
 
-Plus simple, et meilleure option, on peut laisser docker gérer le stockage sur la machine hôte. On associe juste un nom au volume:
+Dans `docker run` on peut faire l'association **hôte:docker** `doker run -v /home/mount/data:var/lib/mysql/data`
 
 ```sh
-docker run
-	- name:var/lib/mysql/data
+docker run \
+--name recycla-score-mysql \
+--publish 3307:3306 \
+--env MYSQL_ROOT_PASSWORD=mdp \
+--detach \
+--volume /Users/pierrejaumier/mysql/data:/var/lib/mysql/data \
+rcs-mysql:1.0
+```
+
+Plus simple, et meilleure option, on peut laisser docker gérer le stockage sur la machine hôte. On associe juste un nom au volume: (c'est docker qui gère le lien entre le container et le volume dit "named volume")
+
+```sh
+docker run \
+	-v name:var/lib/mysql/data
 ```
 
 Dans docker-compose:
@@ -46,5 +58,5 @@ down
 
 ```sh
 docker volume ls
-docker volume rm docker_mongo-data
+docker volume rm initiation-docker_mongo-data
 ```
